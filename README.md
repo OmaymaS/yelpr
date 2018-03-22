@@ -10,4 +10,4 @@ From [yelp authentication guide](https://www.yelp.com/developers/documentation/v
 
 - Go to [Create App](https://www.yelp.com/developers/v3/manage_app)
 - In the create new app form, enter information about your app, then agree to Yelp API Terms of Use and Display Requirements. Then click the Submit button.
-- You will now have an API Key.""
+- You will now have an API Key."
