@@ -2,7 +2,9 @@
 
 An R library for the [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started)
 
-## Authentication
+## Installation
+
+## API Authentication
 
 From [yelp authentication guide](https://www.yelp.com/developers/documentation/v3/authentication) :
 
@@ -11,3 +13,16 @@ From [yelp authentication guide](https://www.yelp.com/developers/documentation/v
 - Go to [Create App](https://www.yelp.com/developers/v3/manage_app)
 - In the create new app form, enter information about your app, then agree to Yelp API Terms of Use and Display Requirements. Then click the Submit button.
 - You will now have an API Key."
+
+
+## Usage
+
+### Business Endpoint 
+
+```
+key <- "######"
+
+# search businesses with keyword 'food' in 'New York'
+search_business(api_key = key, parameters = list(term ='food',
+                                                 location = 'New York'))
+```
