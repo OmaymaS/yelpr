@@ -30,11 +30,26 @@ search_business <- function(api_key, parameters){
 
   res <- GET("https://api.yelp.com/v3/businesses/search",
       add_headers(Authorization = prepare_header(api_key)),
-      query = parameters)
+      query = list(phone = phone_number))
 
   fromJSON(content(res, type = "text"))
 }
 
+
+#'
+#' @examples
+#' key <- "######"
+#' search_business_id(key, 'gary-danko-san-francisco')
+#'
+search_business_id <- function(api_key, business_id){
+
+  endpoint_url <- paste0("https://api.yelp.com/v3/businesses/", business_id)
+
+  res <- GET(endpoint_url,
+             add_headers(Authorization = prepare_header(api_key)))
+
+  fromJSON(content(res, type = "text"))
+}
 
 #' Return a list of businesses on yelp based on the provided phone number
 #'
