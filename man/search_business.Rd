@@ -24,9 +24,10 @@ search businesse on yelp
 }
 \details{
 \itemize{
-\item location (string): Required if either latitude or longitude is not provided. Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used when searching for businesses
-\item latitude (decimal): Required if location is not provided. Latitude of the location you want to search nearby
-\item longitude (decimal): Required if location is not provided. Longitude of the location you want to search nearby.
+\item location(string): Required if either latitude or longitude is not provided. Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used when searching for businesses
+\item latitude(decimal): Required if location is not provided. Latitude of the location you want to search nearby
+\item longitude(decimal): Required if location is not provided. Longitude of the location you want to search nearby.
+\item optional parameters ..
 }
 }
 \examples{
