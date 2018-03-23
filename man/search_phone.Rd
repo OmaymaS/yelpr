@@ -12,7 +12,7 @@ search_phone(api_key, phone_number)
 \item{phone_number}{Phone number of the business you want to search for. It must start with + and include the country code, like +14159083801}
 }
 \value{
-list with the following elements:
+List with the following elements:
 \itemize{
 \item total: Total number of business Yelp finds based on the search criteria. Sometimes, the value may exceed 1000. In such case, you still can only get up to 1000 businesses. total may be limited to 40 for non-default sorts such as "distance" and "review_count"
 \item businesses:  List of business Yelp finds based on the search criteria
