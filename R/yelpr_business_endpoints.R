@@ -15,11 +15,10 @@
 #' search_business(api_key = key, parameters = list(term ='food',
 #'                                                  location = 'New York'))
 #'
-#' @return list with the following elements:
+#' @return List with the following elements:
 #' * total: Total number of business Yelp finds based on the search criteria. Sometimes, the value may exceed 1000. In such case, you still can only get up to 1000 businesses. total may be limited to 40 for non-default sorts such as "distance" and "review_count"
 #' * businesses:  List of business Yelp finds based on the search criteria
 #' * region: Suggested area in a map to display results in
-
 #' @md
 #'
 #' @import jsonlite
@@ -34,4 +33,32 @@ search_business <- function(api_key, parameters){
       query = parameters)
 
   fromJSON(content(res, type = "text"))
+}
+
+
+#' Return a list of businesses on yelp based on the provided phone number
+#'
+#' @param api_key string
+#' @param phone_number Phone number of the business you want to search for. It must start with + and include the country code, like +14159083801
+#'
+#' @return List with the following elements:
+#'  * total: Total number of business Yelp finds based on the search criteria. Sometimes, the value may exceed 1000. In such case, you still can only get up to 1000 businesses. total may be limited to 40 for non-default sorts such as "distance" and "review_count"
+#' * businesses:  List of business Yelp finds based on the search criteria
+#' @md
+#'
+#' @examples
+#' key <- "######"
+#' search_phone(api_key = key, phone_number = '+14159083801')
+#'
+#' @export
+
+search_phone <- function(api_key, phone_number){
+
+  res <- GET("https://api.yelp.com/v3/businesses/search/phone",
+             add_headers(Authorization = prepare_header(api_key)),
+             query = list(phone = phone_number))
+
+
+  fromJSON(content(res, type = "text"))
+
 }
