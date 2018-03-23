@@ -2,6 +2,7 @@
 
 export(prepare_header)
 export(search_business)
+export(search_business_id)
 export(search_phone)
 import(httr)
 import(jsonlite)

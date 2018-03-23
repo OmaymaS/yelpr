@@ -25,22 +25,26 @@
 #' @import httr
 #' @export
 
-
 search_business <- function(api_key, parameters){
 
   res <- GET("https://api.yelp.com/v3/businesses/search",
       add_headers(Authorization = prepare_header(api_key)),
-      query = list(phone = phone_number))
+      query = parameters)
 
   fromJSON(content(res, type = "text"))
 }
 
 
+#' Search businesses on yelp by id
+#'
+#' @param api_key string
+#' @param id string
 #'
 #' @examples
 #' key <- "######"
 #' search_business_id(key, 'gary-danko-san-francisco')
 #'
+#' @export
 search_business_id <- function(api_key, business_id){
 
   endpoint_url <- paste0("https://api.yelp.com/v3/businesses/", business_id)
