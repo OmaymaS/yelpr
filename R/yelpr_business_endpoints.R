@@ -58,7 +58,5 @@ search_phone <- function(api_key, phone_number){
              add_headers(Authorization = prepare_header(api_key)),
              query = list(phone = phone_number))
 
-
   fromJSON(content(res, type = "text"))
-
 }
