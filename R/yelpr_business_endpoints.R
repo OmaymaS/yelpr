@@ -42,10 +42,10 @@ search_business <- function(api_key, parameters){
 #'
 #' @examples
 #' key <- "######"
-#' search_business_id(key, 'gary-danko-san-francisco')
+#' lookup_business_id(key, 'gary-danko-san-francisco')
 #'
 #' @export
-search_business_id <- function(api_key, business_id){
+lookup_business_id <- function(api_key, business_id){
 
   endpoint_url <- paste0("https://api.yelp.com/v3/businesses/", business_id)
 
@@ -79,3 +79,39 @@ search_phone <- function(api_key, phone_number){
 
   fromJSON(content(res, type = "text"))
 }
+
+
+#' return up to three review excerpts for a given business ordered by Yelp's default sort order
+#'
+#' @examples
+#' key <- "######"
+#'search_business_review(key, 'gary-danko-san-francisco')
+#'
+#' @export
+#'
+search_business_review <- function(api_key, business_id){
+
+  endpoint_url <- paste0("https://api.yelp.com/v3/businesses/", business_id, "/reviews")
+
+  res <- GET(endpoint_url,
+             add_headers(Authorization = prepare_header(api_key)))
+
+  fromJSON(content(res, type = "text"))
+}
+
+
+#'
+#'
+# search_transaction <- function(api_key,
+#                                location =  NULL,
+#                                latitude = NULL,
+#                                longitude = NULL){
+#
+#
+# }
+
+#' https://api.yelp.com/v3/businesses/matches/best
+#' #requires you be in our developer beta.
+# match_business_best <- function(){
+#
+# }
