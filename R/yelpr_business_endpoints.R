@@ -12,7 +12,7 @@
 #' @examples
 #' # search businesses with keyword 'food' in New York
 #' key <- "######"
-#' search_business(api_key = key, parameters = list(term ='food',
+#' business_search(api_key = key, parameters = list(term ='food',
 #'                                                  location = 'New York'))
 #'
 #' @return List with the following elements:
@@ -25,7 +25,7 @@
 #' @import httr
 #' @export
 
-search_business <- function(api_key, parameters){
+business_search <- function(api_key, parameters){
 
   res <- GET("https://api.yelp.com/v3/businesses/search",
       add_headers(Authorization = prepare_header(api_key)),
@@ -42,10 +42,10 @@ search_business <- function(api_key, parameters){
 #'
 #' @examples
 #' key <- "######"
-#' lookup_business_id(key, 'gary-danko-san-francisco')
+#' business_lookup_id(key, 'gary-danko-san-francisco')
 #'
 #' @export
-lookup_business_id <- function(api_key, business_id){
+business_lookup_id <- function(api_key, business_id){
 
   endpoint_url <- paste0("https://api.yelp.com/v3/businesses/", business_id)
 
@@ -67,11 +67,11 @@ lookup_business_id <- function(api_key, business_id){
 #'
 #' @examples
 #' key <- "######"
-#' search_phone(api_key = key, phone_number = '+14159083801')
+#' business_search_phone(api_key = key, phone_number = '+14159083801')
 #'
 #' @export
 
-search_phone <- function(api_key, phone_number){
+business_search_phone <- function(api_key, phone_number){
 
   res <- GET("https://api.yelp.com/v3/businesses/search/phone",
              add_headers(Authorization = prepare_header(api_key)),
@@ -85,11 +85,11 @@ search_phone <- function(api_key, phone_number){
 #'
 #' @examples
 #' key <- "######"
-#'search_business_review(key, 'gary-danko-san-francisco')
+#' business_search_review(key, 'gary-danko-san-francisco')
 #'
 #' @export
 #'
-search_business_review <- function(api_key, business_id){
+business_search_review <- function(api_key, business_id){
 
   endpoint_url <- paste0("https://api.yelp.com/v3/businesses/", business_id, "/reviews")
 
@@ -104,9 +104,9 @@ search_business_review <- function(api_key, business_id){
 #'
 #' @examples
 #' key <- "######"
-#' search_autocomplete(key, "star")
+#' business_search_autocomplete(key, "star")
 #'
-search_autocomplete <- function(api_key, input_text){
+business_search_autocomplete <- function(api_key, input_text){
 
   res <- GET("https://api.yelp.com/v3/autocomplete",
              add_headers(Authorization = prepare_header(api_key)),
