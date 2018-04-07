@@ -28,8 +28,8 @@
 business_search <- function(api_key, parameters){
 
   res <- GET("https://api.yelp.com/v3/businesses/search",
-      add_headers(Authorization = prepare_header(api_key)),
-      query = parameters)
+             add_headers(Authorization = prepare_header(api_key)),
+             query = parameters)
 
   fromJSON(content(res, type = "text"))
 }
@@ -116,15 +116,27 @@ business_search_autocomplete <- function(api_key, input_text){
 }
 
 
+#'  return a list of businesses which support food delivery transactions.
 #'
+#' @examples
+#' key <- "######"
+#' business_search_transaction(key,
+#'                            transaction_type = "delivery",
+#'                            list(longitude = "-122.399305736113", latitude = "37.787789124691"))
 #'
-# search_transaction <- function(api_key,
-#                                location =  NULL,
-#                                latitude = NULL,
-#                                longitude = NULL){
-#
-#
-# }
+#' @export
+business_search_transaction <- function(api_key,
+                                        transaction_type = "delivery",
+                                        parameters){
+
+  endpoint_url <- paste0("https://api.yelp.com/v3/transactions/", transaction_type, "/search")
+
+  res <- GET(endpoint_url,
+             add_headers(Authorization = prepare_header(api_key)),
+             query = parameters)
+
+  fromJSON(content(res, type = "text"))
+}
 
 #' https://api.yelp.com/v3/businesses/matches/best
 #' #requires you be in our developer beta.
