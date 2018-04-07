@@ -38,7 +38,7 @@ business_search <- function(api_key, parameters){
 #' Search businesses on yelp by id
 #'
 #' @param api_key string
-#' @param id string
+#' @param business_id business id
 #'
 #' @examples
 #' key <- "######"

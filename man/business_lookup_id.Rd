@@ -9,7 +9,7 @@ business_lookup_id(api_key, business_id)
 \arguments{
 \item{api_key}{string}
 
-\item{id}{string}
+\item{business_id}{business id}
 }
 \description{
 Search businesses on yelp by id
