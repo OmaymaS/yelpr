@@ -83,6 +83,9 @@ business_search_phone <- function(api_key, phone_number){
 
 #' return up to three review excerpts for a given business ordered by Yelp's default sort order
 #'
+#' @param api_key string
+#' @param business_id business id
+#'
 #' @examples
 #' key <- "######"
 #' business_search_review(key, 'gary-danko-san-francisco')

@@ -6,6 +6,11 @@
 \usage{
 business_search_review(api_key, business_id)
 }
+\arguments{
+\item{api_key}{string}
+
+\item{business_id}{business id}
+}
 \description{
 return up to three review excerpts for a given business ordered by Yelp's default sort order
 }
