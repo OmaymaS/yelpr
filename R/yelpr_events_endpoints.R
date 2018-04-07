@@ -37,6 +37,10 @@ event_search <- function(api_key, parameters = list()){
 
 #' return the featured event for a given location. Featured events are chosen by Yelp's community managers.
 #'
+#' @examples
+#' key <- "######"
+#' event_search_featured(api_key = key, parameters = list(location = 'New York'))
+#'
 #' @export
 
 event_search_featured <- function(api_key, parameters){
