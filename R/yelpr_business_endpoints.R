@@ -138,8 +138,28 @@ business_search_transaction <- function(api_key,
   fromJSON(content(res, type = "text"))
 }
 
-#' https://api.yelp.com/v3/businesses/matches/best
-#' #requires you be in our developer beta.
-# match_business_best <- function(){
-#
-# }
+#'  match business data from other sources against businesses on Yelp, based on minimal provided information.
+#'
+#'  @examples
+#' key <- "######"
+#' business_match_name(key, "lookup", list(name = "Good",
+#'                                          city = "San Francisco",
+#'                                          state = "CA",
+#'                                          country = "US"))
+#'
+#'  @export
+
+business_match_name <- function(api_key,
+                                type = "lookup",
+                                parameters){
+
+  endpoint_url <- paste0("https://api.yelp.com/v3/businesses/matches/", type)
+
+  res <- GET(endpoint_url,
+             add_headers(Authorization = prepare_header(api_key)),
+             query = parameters)
+
+  fromJSON(content(res, type = "text"))
+}
+
+
