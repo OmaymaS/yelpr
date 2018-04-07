@@ -131,15 +131,20 @@ business_search_autocomplete <- function(api_key,
 #'  return a list of businesses which support food delivery transactions.
 #'
 #' @param api_key string
-#' @param parameters list corresponding to API paremeters  \url{https://www.yelp.com/developers/documentation/v3/transaction_search}
+#' @param transaction_type currently "delivery"
+#' @param location Required when latitude and longitude aren't provided. Address of the location you want to deliver to
+#' @param latitude Required when location isn't provided. Latitude of the location you want to deliver to.
+#' @param longitude Required when location isn't provided. Longitude of the location you want to deliver to.
 #'
 #' @examples
 #' key <- "######"
 #' business_search_transaction(key,
 #'                            transaction_type = "delivery",
-#'                            list(longitude = "-122.399305736113", latitude = "37.787789124691"))
+#'                            longitude = "-122.399305736113", latitude = "37.787789124691")
 #'
-#' business_search_transaction(key, "delivery", location = "94105")
+#' business_search_transaction(key,
+#'                            transaction_type = "delivery",
+#'                            location = "94105")
 #'
 #' @export
 

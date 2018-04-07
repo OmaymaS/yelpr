@@ -5,7 +5,18 @@
 \title{return a list of businesses which support food delivery transactions.}
 \usage{
 business_search_transaction(api_key, transaction_type = "delivery",
-  parameters)
+  location = NULL, latitude = NULL, longitude = NULL)
+}
+\arguments{
+\item{api_key}{string}
+
+\item{transaction_type}{currently "delivery"}
+
+\item{location}{Required when latitude and longitude aren't provided. Address of the location you want to deliver to}
+
+\item{latitude}{Required when location isn't provided. Latitude of the location you want to deliver to.}
+
+\item{longitude}{Required when location isn't provided. Longitude of the location you want to deliver to.}
 }
 \description{
 return a list of businesses which support food delivery transactions.
@@ -14,6 +25,10 @@ return a list of businesses which support food delivery transactions.
 key <- "######"
 business_search_transaction(key,
                            transaction_type = "delivery",
-                           list(longitude = "-122.399305736113", latitude = "37.787789124691"))
+                           longitude = "-122.399305736113", latitude = "37.787789124691")
+
+business_search_transaction(key,
+                           transaction_type = "delivery",
+                           location = "94105")
 
 }
