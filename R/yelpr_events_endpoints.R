@@ -33,3 +33,17 @@ event_search <- function(api_key, parameters = list()){
 
   fromJSON(content(res, type = "text"))
 }
+
+
+#' return the featured event for a given location. Featured events are chosen by Yelp's community managers.
+#'
+#' @export
+
+event_search_featured <- function(api_key, parameters){
+
+  res <- GET("https://api.yelp.com/v3/events/featured",
+             add_headers(Authorization = prepare_header(api_key)),
+             query = parameters)
+
+  fromJSON(content(res, type = "text"))
+}

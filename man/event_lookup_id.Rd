@@ -2,10 +2,17 @@
 % Please edit documentation in R/yelpr_events_endpoints.R
 \name{event_lookup_id}
 \alias{event_lookup_id}
-\title{return the detailed information of a Yelp event}
+\title{return the detailed information of a Yelp event
+This endpoint requires you be in yelp developer beta}
 \usage{
 event_lookup_id(api_key, event_id)
 }
 \description{
 return the detailed information of a Yelp event
+This endpoint requires you be in yelp developer beta
+}
+\examples{
+key <- "######"
+event_lookup_id(key, "oakland-saucy-oakland-restaurant-pop-up")
+
 }
