@@ -191,7 +191,7 @@ business_search_transaction <- function(api_key,
 #'
 #'  @examples
 #' key <- "######"
-#' business_match_name2(key, "lookup",
+#' business_match_name(key, "lookup",
 #'                     name = "Good",
 #'                     city = "San Francisco",
 #'                     state = "CA",
