@@ -122,7 +122,7 @@ business_search_autocomplete <- function(api_key,
 
   res <- GET("https://api.yelp.com/v3/autocomplete",
              add_headers(Authorization = prepare_header(api_key)),
-             query = list(text = input_text))
+             query = parameters)
 
   fromJSON(content(res, type = "text"))
 }
