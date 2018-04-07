@@ -26,3 +26,12 @@ key <- "######"
 search_business(api_key = key, parameters = list(term ='food',
                                                  location = 'New York'))
 ```
+
+### Events Endpoint
+
+```
+key <- "######"
+
+# search featured event in New York
+event_search_featured(api_key = key, location = 'New York')
+```
