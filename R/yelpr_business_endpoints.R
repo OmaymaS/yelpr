@@ -142,16 +142,21 @@ business_search_transaction <- function(api_key,
 #'
 #'  @examples
 #' key <- "######"
-#' business_match_name(key, "lookup", list(name = "Good",
-#'                                          city = "San Francisco",
-#'                                          state = "CA",
-#'                                          country = "US"))
+#' business_match_name2(key, "lookup",
+#'                     name = "Good",
+#'                     city = "San Francisco",
+#'                     state = "CA",
+#'                     country = "US",
+#'                     postal_code = "12345")
 #'
 #'  @export
 
 business_match_name <- function(api_key,
                                 type = "lookup",
-                                parameters){
+                                name, city, state, country, ...){
+
+  parameters <- c(as.list(environment()), list(...))
+  parameters <-  parameters[3:length(parameters)]
 
   endpoint_url <- paste0("https://api.yelp.com/v3/businesses/matches/", type)
 
@@ -161,5 +166,20 @@ business_match_name <- function(api_key,
 
   fromJSON(content(res, type = "text"))
 }
+
+
+# business_match_name2 <- function(api_key,
+#                                 type = "lookup",
+#                                 parameters){
+#
+#   endpoint_url <- paste0("https://api.yelp.com/v3/businesses/matches/", type)
+#
+#   res <- GET(endpoint_url,
+#              add_headers(Authorization = prepare_header(api_key)),
+#              query = parameters)
+#
+#   fromJSON(content(res, type = "text"))
+# }
+
 
 

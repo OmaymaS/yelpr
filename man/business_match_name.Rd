@@ -4,15 +4,17 @@
 \alias{business_match_name}
 \title{match business data from other sources against businesses on Yelp, based on minimal provided information.}
 \usage{
-business_match_name(api_key, type = "lookup", parameters)
+business_match_name(api_key, type = "lookup", name, city, state, country, ...)
 }
 \description{
 @examples
 key <- "######"
-business_match_name(key, "lookup", list(name = "Good",
-                                         city = "San Francisco",
-                                         state = "CA",
-                                         country = "US"))
+business_match_name2(key, "lookup",
+                    name = "Good",
+                    city = "San Francisco",
+                    state = "CA",
+                    country = "US",
+                    postal_code = "12345")
 }
 \details{
 @export
