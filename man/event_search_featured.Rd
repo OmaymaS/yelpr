@@ -4,13 +4,25 @@
 \alias{event_search_featured}
 \title{return the featured event for a given location. Featured events are chosen by Yelp's community managers.}
 \usage{
-event_search_featured(api_key, parameters)
+event_search_featured(api_key, location = NULL, latitude = NULL,
+  longitude = NULL)
+}
+\arguments{
+\item{api_key}{string}
+
+\item{location}{Required, if latitude and longitude not provided. Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used while searching for events.}
+
+\item{latitude}{Required, if location not provided. Latitude of the location to search from.}
+
+\item{longitude}{Required, if location not provided. Longitude of the location to search from.}
+
+\item{transaction_type}{currently "delivery"}
 }
 \description{
 return the featured event for a given location. Featured events are chosen by Yelp's community managers.
 }
 \examples{
 key <- "######"
-event_search_featured(api_key = key, parameters = list(location = 'New York'))
+event_search_featured(api_key = key, location = 'New York')
 
 }
