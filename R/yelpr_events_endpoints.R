@@ -1,5 +1,9 @@
-
 #' return the detailed information of a Yelp event
+#' This endpoint requires you be in yelp developer beta
+#'
+#' @examples
+#' key <- "######"
+#' event_lookup_id(key, "oakland-saucy-oakland-restaurant-pop-up")
 #'
 #' @export
 
