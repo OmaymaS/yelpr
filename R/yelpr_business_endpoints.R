@@ -101,12 +101,15 @@ business_search_review <- function(api_key, business_id){
 
 
 #' return autocomplete suggestions for search keywords, businesses and categories, based on the input text
+#' @param api_key string
+#' @param input_text Text to return autocomplete suggestions for
 #'
 #' @examples
 #' key <- "######"
 #' business_search_autocomplete(key, "star")
 #'
-business_search_autocomplete <- function(api_key, input_text){
+business_search_autocomplete <- function(api_key, input_text,
+                                         ){
 
   res <- GET("https://api.yelp.com/v3/autocomplete",
              add_headers(Authorization = prepare_header(api_key)),
@@ -118,16 +121,29 @@ business_search_autocomplete <- function(api_key, input_text){
 
 #'  return a list of businesses which support food delivery transactions.
 #'
+#' @param api_key string
+#' @param parameters list corresponding to API paremeters  \url{https://www.yelp.com/developers/documentation/v3/transaction_search}
+#'
 #' @examples
 #' key <- "######"
 #' business_search_transaction(key,
 #'                            transaction_type = "delivery",
 #'                            list(longitude = "-122.399305736113", latitude = "37.787789124691"))
 #'
+#' business_search_transaction(key, "delivery", location = "94105")
+#'
 #' @export
+
 business_search_transaction <- function(api_key,
                                         transaction_type = "delivery",
-                                        parameters){
+                                        location = NULL,
+                                        latitude = NULL,
+                                        longitude = NULL
+                                        ){
+
+
+  parameters <-  parameters <- c(as.list(environment()))
+  parameters <-  parameters[3:length(parameters)]
 
   endpoint_url <- paste0("https://api.yelp.com/v3/transactions/", transaction_type, "/search")
 
@@ -137,6 +153,22 @@ business_search_transaction <- function(api_key,
 
   fromJSON(content(res, type = "text"))
 }
+
+
+# business_search_transaction2 <- function(api_key,
+#                                         transaction_type = "delivery",
+#                                         parameters){
+#
+#   endpoint_url <- paste0("https://api.yelp.com/v3/transactions/", transaction_type, "/search")
+#
+#   res <- GET(endpoint_url,
+#              add_headers(Authorization = prepare_header(api_key)),
+#              query = parameters)
+#
+#   fromJSON(content(res, type = "text"))
+# }
+
+
 
 #'  match business data from other sources against businesses on Yelp, based on minimal provided information.
 #'
