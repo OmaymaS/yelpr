@@ -2,12 +2,12 @@
 % Please edit documentation in R/yelpr_events_endpoints.R
 \name{event_search}
 \alias{event_search}
-\title{return events based on the provided search criteria.}
+\title{return events based on the provided search criteria}
 \usage{
 event_search(api_key, ...)
 }
 \description{
-return events based on the provided search criteria.
+return events based on the provided search criteria
 }
 \examples{
 key <- "######"

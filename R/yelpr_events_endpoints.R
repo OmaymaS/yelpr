@@ -22,7 +22,7 @@ event_lookup_id <- function(api_key, event_id){
   fromJSON(content(res, type = "text"))
 }
 
-#' return events based on the provided search criteria.
+#' return events based on the provided search criteria
 #'
 #' @examples
 #' key <- "######"
@@ -55,7 +55,6 @@ event_search <- function(api_key, ...){
 #' event_search_featured(api_key = key, location = 'New York')
 #'
 #' @export
-#'
 
 event_search_featured <- function(api_key,
                                   location = NULL,
