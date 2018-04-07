@@ -100,6 +100,22 @@ search_business_review <- function(api_key, business_id){
 }
 
 
+#' return autocomplete suggestions for search keywords, businesses and categories, based on the input text
+#'
+#' @examples
+#' key <- "######"
+#' search_autocomplete(key, "star")
+#'
+search_autocomplete <- function(api_key, input_text){
+
+  res <- GET("https://api.yelp.com/v3/autocomplete",
+             add_headers(Authorization = prepare_header(api_key)),
+             query = list(text = input_text))
+
+  fromJSON(content(res, type = "text"))
+}
+
+
 #'
 #'
 # search_transaction <- function(api_key,
