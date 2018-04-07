@@ -15,5 +15,21 @@ event_lookup_id <- function(api_key, event_id){
              add_headers(Authorization = prepare_header(api_key)))
 
   fromJSON(content(res, type = "text"))
+}
 
+#' return events based on the provided search criteria.
+#'
+#' @examples
+#' key <- "######"
+#' ## retrieve 10 events
+#' event_search(key, list(limit = 10))
+#'
+#' @export
+event_search <- function(api_key, parameters = list()){
+
+  res <- GET("https://api.yelp.com/v3/events",
+            add_headers(Authorization = prepare_header(api_key)),
+            query = parameters)
+
+  fromJSON(content(res, type = "text"))
 }
