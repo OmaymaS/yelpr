@@ -1,5 +1,10 @@
 #' return the detailed information of a Yelp event
+#'
+#' @details
 #' This endpoint requires you be in yelp developer beta
+#'
+#' @param api_key string
+#' @param event_id event id
 #'
 #' @examples
 #' key <- "######"
@@ -22,10 +27,12 @@ event_lookup_id <- function(api_key, event_id){
 #' @examples
 #' key <- "######"
 #' ## retrieve 10 events
-#' event_search(key, list(limit = 10))
+#' event_search(key, limit = 10)
 #'
 #' @export
-event_search <- function(api_key, parameters = list()){
+event_search <- function(api_key, ...){
+
+  parameters <- list(...)
 
   res <- GET("https://api.yelp.com/v3/events",
             add_headers(Authorization = prepare_header(api_key)),

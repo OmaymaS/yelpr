@@ -4,7 +4,7 @@
 \alias{event_search}
 \title{return events based on the provided search criteria.}
 \usage{
-event_search(api_key, parameters = list())
+event_search(api_key, ...)
 }
 \description{
 return events based on the provided search criteria.
@@ -12,6 +12,6 @@ return events based on the provided search criteria.
 \examples{
 key <- "######"
 ## retrieve 10 events
-event_search(key, list(limit = 10))
+event_search(key, limit = 10)
 
 }
