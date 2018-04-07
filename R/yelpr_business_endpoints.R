@@ -103,13 +103,22 @@ business_search_review <- function(api_key, business_id){
 #' return autocomplete suggestions for search keywords, businesses and categories, based on the input text
 #' @param api_key string
 #' @param input_text Text to return autocomplete suggestions for
+#' @param latitude Required if want to get autocomplete suggestions for businesses. Latitude of the location to look for business autocomplete suggestions.
+#' @param longitude Required if want to get autocomplete suggestions for businesses. Longitude of the location to look for business autocomplete suggestions.
 #'
 #' @examples
 #' key <- "######"
 #' business_search_autocomplete(key, "star")
 #'
-business_search_autocomplete <- function(api_key, input_text,
+business_search_autocomplete <- function(api_key,
+                                         input_text,
+                                         latitude = NULL,
+                                         longitude =  NULL,
+                                         ...
                                          ){
+
+  parameters <-  parameters <- c(as.list(environment()), list(...))
+  parameters <-  parameters[2:length(parameters)]
 
   res <- GET("https://api.yelp.com/v3/autocomplete",
              add_headers(Authorization = prepare_header(api_key)),

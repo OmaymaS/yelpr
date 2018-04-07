@@ -4,7 +4,17 @@
 \alias{business_search_autocomplete}
 \title{return autocomplete suggestions for search keywords, businesses and categories, based on the input text}
 \usage{
-business_search_autocomplete(api_key, input_text)
+business_search_autocomplete(api_key, input_text, latitude = NULL,
+  longitude = NULL, ...)
+}
+\arguments{
+\item{api_key}{string}
+
+\item{input_text}{Text to return autocomplete suggestions for}
+
+\item{latitude}{Required if want to get autocomplete suggestions for businesses. Latitude of the location to look for business autocomplete suggestions.}
+
+\item{longitude}{Required if want to get autocomplete suggestions for businesses. Longitude of the location to look for business autocomplete suggestions.}
 }
 \description{
 return autocomplete suggestions for search keywords, businesses and categories, based on the input text
