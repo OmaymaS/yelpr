@@ -6,6 +6,29 @@
 #' @param api_key string
 #' @param event_id event id
 #'
+#' @return
+#' * attending_count: Number of Yelp users attending this event
+#' * category: The category alias of this event
+#' * cost: Cost of attending this event
+#' * cost_max: Maximum cost of this event
+#' * description: Description excerpt of this event
+#' * event_site_url: Yelp page of this event
+#' * id: Event id
+#' * image_url: Yelp image URL of this event
+#' * interested_count: Number of Yelp users interested in attending this event
+#' * is_canceled: Whether this event is canceled
+#' * is_free: Whether this event is free
+#' * is_official: Whether this event is created by a Yelp community manager
+#' * latitude: Latitude of this event
+#' * longitude: Longitude of this event
+#' * name: Name of this event
+#' * tickets_url: URL to buy tickets for this event
+#' * time_end: Time this event ends. Returns date and time in the following format - "YYYY-MM-DD HH-mm"
+#' * time_start: Time this event starts. Returns date and time in the following format - "YYYY-MM-DD HH-mm"
+#' * location: 	The location of this event, including address, city, state, zipcode and country
+#' * business_id: Yelp Business ID of this event. No ID is returned if a business is not associated with an event
+#' @md
+#'
 #' @examples
 #' key <- "######"
 #' event_lookup_id(key, "oakland-saucy-oakland-restaurant-pop-up")

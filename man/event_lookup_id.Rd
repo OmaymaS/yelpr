@@ -11,6 +11,30 @@ event_lookup_id(api_key, event_id)
 
 \item{event_id}{event id}
 }
+\value{
+\itemize{
+\item attending_count: Number of Yelp users attending this event
+\item category: The category alias of this event
+\item cost: Cost of attending this event
+\item cost_max: Maximum cost of this event
+\item description: Description excerpt of this event
+\item event_site_url: Yelp page of this event
+\item id: Event id
+\item image_url: Yelp image URL of this event
+\item interested_count: Number of Yelp users interested in attending this event
+\item is_canceled: Whether this event is canceled
+\item is_free: Whether this event is free
+\item is_official: Whether this event is created by a Yelp community manager
+\item latitude: Latitude of this event
+\item longitude: Longitude of this event
+\item name: Name of this event
+\item tickets_url: URL to buy tickets for this event
+\item time_end: Time this event ends. Returns date and time in the following format - "YYYY-MM-DD HH-mm"
+\item time_start: Time this event starts. Returns date and time in the following format - "YYYY-MM-DD HH-mm"
+\item location: 	The location of this event, including address, city, state, zipcode and country
+\item business_id: Yelp Business ID of this event. No ID is returned if a business is not associated with an event
+}
+}
 \description{
 return the detailed information of a Yelp event
 }
