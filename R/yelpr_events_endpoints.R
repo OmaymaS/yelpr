@@ -47,6 +47,14 @@ event_lookup_id <- function(api_key, event_id){
 
 #' return events based on the provided search criteria
 #'
+#' @param api_key string
+#' @param ... optional parameters [More](https://www.yelp.com/developers/documentation/v3/event_search)
+#'
+#' @return List with the following elements:
+#' * total: Total number of events returned based on search criteria
+#' * events: List of events found matching search criteria
+#' @md
+#'
 #' @examples
 #' key <- "######"
 #' ## retrieve 10 events

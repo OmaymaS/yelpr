@@ -6,6 +6,18 @@
 \usage{
 event_search(api_key, ...)
 }
+\arguments{
+\item{api_key}{string}
+
+\item{...}{optional parameters \href{https://www.yelp.com/developers/documentation/v3/event_search}{More}}
+}
+\value{
+List with the following elements:
+\itemize{
+\item total: Total number of events returned based on search criteria
+\item events: List of events found matching search criteria
+}
+}
 \description{
 return events based on the provided search criteria
 }
