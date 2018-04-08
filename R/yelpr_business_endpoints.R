@@ -173,6 +173,11 @@ business_search_autocomplete <- function(api_key,
 #' @param latitude Required when location isn't provided. Latitude of the location you want to deliver to.
 #' @param longitude Required when location isn't provided. Longitude of the location you want to deliver to.
 #'
+#' @return List with the following elements:
+#' * total: The total number of business Yelp finds based on the search criteria. Sometimes, the value may exceed 1000. In such case, you still can only get up to 1000 businesses.
+#' * businesses: A list of business Yelp finds based on the search criteria.
+#' @md
+#'
 #' @examples
 #' key <- "######"
 #' business_search_transaction(key,

@@ -18,6 +18,13 @@ business_search_transaction(api_key, transaction_type = "delivery",
 
 \item{longitude}{Required when location isn't provided. Longitude of the location you want to deliver to.}
 }
+\value{
+List with the following elements:
+\itemize{
+\item total: The total number of business Yelp finds based on the search criteria. Sometimes, the value may exceed 1000. In such case, you still can only get up to 1000 businesses.
+\item businesses: A list of business Yelp finds based on the search criteria.
+}
+}
 \description{
 return a list of businesses which support food delivery transactions.
 }
