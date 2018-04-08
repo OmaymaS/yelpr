@@ -4,12 +4,21 @@
 \alias{business_search}
 \title{search businesse on yelp}
 \usage{
-business_search(api_key, parameters)
+business_search(api_key, location = NULL, latitude = NULL,
+  longitude = NULL, term = NULL, ...)
 }
 \arguments{
 \item{api_key}{string}
 
-\item{parameters}{list corresponding to API paremeters  \url{https://www.yelp.com/developers/documentation/v3/business_search}}
+\item{location}{string. Required if either latitude or longitude is not provided. Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used when searching for businesses}
+
+\item{latitude}{decimal. Required if location is not provided. Latitude of the location you want to search nearby}
+
+\item{longitude}{decimal. Required if location is not provided. Longitude of the location you want to search nearby}
+
+\item{term}{string. Optional search term (e.g. "food", "restaurants"). If term isn’t included we search everything. The term keyword also accepts business names such as "Starbucks"}
+
+\item{...}{optional paramters \href{https://www.yelp.com/developers/documentation/v3/business_search}{More}}
 }
 \value{
 List with the following elements:
@@ -22,18 +31,11 @@ List with the following elements:
 \description{
 search businesse on yelp
 }
-\details{
-\itemize{
-\item location(string): Required if either latitude or longitude is not provided. Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used when searching for businesses
-\item latitude(decimal): Required if location is not provided. Latitude of the location you want to search nearby
-\item longitude(decimal): Required if location is not provided. Longitude of the location you want to search nearby.
-\item optional parameters ..
-}
-}
 \examples{
 # search businesses with keyword 'food' in New York
 key <- "######"
-business_search(api_key = key, parameters = list(term ='food',
-                                                 location = 'New York'))
+business_search(key,
+                location = 'New York',
+                term = "chinese")
 
 }

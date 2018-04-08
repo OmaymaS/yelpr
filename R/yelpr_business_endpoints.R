@@ -1,19 +1,18 @@
 #' search businesse on yelp
 #'
 #' @param api_key string
-#' @param parameters list corresponding to API paremeters  \url{https://www.yelp.com/developers/documentation/v3/business_search}
-#'
-#' @details
-#' * location(string): Required if either latitude or longitude is not provided. Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used when searching for businesses
-#' * latitude(decimal): Required if location is not provided. Latitude of the location you want to search nearby
-#' * longitude(decimal): Required if location is not provided. Longitude of the location you want to search nearby.
-#' * optional parameters ..
+#' @param location string. Required if either latitude or longitude is not provided. Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used when searching for businesses
+#' @param latitude  decimal. Required if location is not provided. Latitude of the location you want to search nearby
+#' @param longitude decimal. Required if location is not provided. Longitude of the location you want to search nearby
+#' @param term string. Optional search term (e.g. "food", "restaurants"). If term isn’t included we search everything. The term keyword also accepts business names such as "Starbucks"
+#' @param ... optional paramters [More](https://www.yelp.com/developers/documentation/v3/business_search)
 #'
 #' @examples
 #' # search businesses with keyword 'food' in New York
 #' key <- "######"
-#' business_search(api_key = key, parameters = list(term ='food',
-#'                                                  location = 'New York'))
+#' business_search(key,
+#'                 location = 'New York',
+#'                 term = "chinese")
 #'
 #' @return List with the following elements:
 #' * total: Total number of business Yelp finds based on the search criteria. Sometimes, the value may exceed 1000. In such case, you still can only get up to 1000 businesses. total may be limited to 40 for non-default sorts such as "distance" and "review_count"
@@ -25,7 +24,18 @@
 #' @import httr
 #' @export
 
-business_search <- function(api_key, parameters){
+business_search <- function(api_key,
+                             location = NULL,
+                             latitude = NULL,
+                             longitude = NULL,
+                             term = NULL,
+                             ...){
+
+
+  parameters <-  parameters <- c(as.list(environment()), list(...))
+  parameters <-  parameters[2:length(parameters)]
+
+  print(parameters)
 
   res <- GET("https://api.yelp.com/v3/businesses/search",
              add_headers(Authorization = prepare_header(api_key)),
@@ -34,6 +44,14 @@ business_search <- function(api_key, parameters){
   fromJSON(content(res, type = "text"))
 }
 
+# business_search2 <- function(api_key, parameters){
+#
+#   res <- GET("https://api.yelp.com/v3/businesses/search",
+#              add_headers(Authorization = prepare_header(api_key)),
+#              query = parameters)
+#
+#   fromJSON(content(res, type = "text"))
+# }
 
 #' Search businesses on yelp by id
 #'
