@@ -35,8 +35,6 @@ business_search <- function(api_key,
   parameters <-  parameters <- c(as.list(environment()), list(...))
   parameters <-  parameters[2:length(parameters)]
 
-  print(parameters)
-
   res <- GET("https://api.yelp.com/v3/businesses/search",
              add_headers(Authorization = prepare_header(api_key)),
              query = parameters)
