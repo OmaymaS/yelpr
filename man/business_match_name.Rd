@@ -6,16 +6,37 @@
 \usage{
 business_match_name(api_key, type = "lookup", name, city, state, country, ...)
 }
+\arguments{
+\item{api_key}{string}
+
+\item{type}{string. 'best match' or 'lookup'}
+
+\item{name}{string. The name of the business. Maximum length is 64}
+
+\item{city}{string. The city of the business. Maximum length is 64}
+
+\item{state}{string. The ISO \href{https://en.wikipedia.org/wiki/ISO_3166-2}{3166-2} with a few \href{https://www.yelp.com/developers/documentation/v3/state_codes}{exceptions} state code of this business. Maximum length is 3.}
+
+\item{country}{string. Required. The \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code of this business. Maximum length is 2}
+
+\item{...}{optional parameters}
+}
+\value{
+businesses: List of Yelp businesses matching the inputs
+}
 \description{
-@examples
+These endpoints let you match business data from other sources against businesses on Yelp, based on minimal provided information. There are two different ways to do this:
+\itemize{
+\item best match: This will only return 1 business that is the best match based on the information provided.
+\item lookup: This will return up to 10 businesses that are the best matches based on the information provided. Both endpoints have the same parameters and return the same response structure.
+}
+}
+\examples{
 key <- "######"
-business_match_name2(key, "lookup",
+business_match_name(key, "lookup",
                     name = "Good",
                     city = "San Francisco",
                     state = "CA",
                     country = "US",
                     postal_code = "12345")
-}
-\details{
-@export
 }

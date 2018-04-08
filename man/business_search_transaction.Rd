@@ -10,7 +10,7 @@ business_search_transaction(api_key, transaction_type = "delivery",
 \arguments{
 \item{api_key}{string}
 
-\item{transaction_type}{currently "delivery"}
+\item{transaction_type}{string. transaction type like "delivery"}
 
 \item{location}{Required when latitude and longitude aren't provided. Address of the location you want to deliver to}
 

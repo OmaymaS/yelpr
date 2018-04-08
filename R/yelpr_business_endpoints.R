@@ -168,7 +168,7 @@ business_search_autocomplete <- function(api_key,
 #'  return a list of businesses which support food delivery transactions.
 #'
 #' @param api_key string
-#' @param transaction_type currently "delivery"
+#' @param transaction_type string. transaction type like "delivery"
 #' @param location Required when latitude and longitude aren't provided. Address of the location you want to deliver to
 #' @param latitude Required when location isn't provided. Latitude of the location you want to deliver to.
 #' @param longitude Required when location isn't provided. Longitude of the location you want to deliver to.
@@ -228,7 +228,23 @@ business_search_transaction <- function(api_key,
 
 #'  match business data from other sources against businesses on Yelp, based on minimal provided information.
 #'
-#'  @examples
+#' @description
+#' These endpoints let you match business data from other sources against businesses on Yelp, based on minimal provided information. There are two different ways to do this:
+#' * best match: This will only return 1 business that is the best match based on the information provided.
+#' * lookup: This will return up to 10 businesses that are the best matches based on the information provided. Both endpoints have the same parameters and return the same response structure.
+#'
+#' @param api_key string
+#' @param type string. 'best match' or 'lookup'
+#' @param name string. The name of the business. Maximum length is 64
+#' @param city string. The city of the business. Maximum length is 64
+#' @param state string. The ISO [3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) with a few [exceptions](https://www.yelp.com/developers/documentation/v3/state_codes) state code of this business. Maximum length is 3.
+#' @param country string. Required. The [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of this business. Maximum length is 2
+#' @param ... optional parameters
+#'
+#' @return
+#' businesses: List of Yelp businesses matching the inputs
+#'
+#' @examples
 #' key <- "######"
 #' business_match_name(key, "lookup",
 #'                     name = "Good",
@@ -236,8 +252,8 @@ business_search_transaction <- function(api_key,
 #'                     state = "CA",
 #'                     country = "US",
 #'                     postal_code = "12345")
-#'
-#'  @export
+#' @md
+#' @export
 
 business_match_name <- function(api_key,
                                 type = "lookup",
