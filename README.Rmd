@@ -1,0 +1,92 @@
+---
+title: "README"
+output: 
+  html_document: 
+    keep_md: yes
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# yelpr
+
+An R library for the [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started)
+
+## Installation
+
+## API Authentication
+
+From [yelp authentication guide](https://www.yelp.com/developers/documentation/v3/authentication) :
+
+"In order to set up your access to Yelp Fusion API, you need to create an app with Yelp. This app represents the application you'll build using our API and includes the credentials you'll need to gain access. Here are the steps for creating an app:
+
+- Go to [Create App](https://www.yelp.com/developers/v3/manage_app)
+- In the create new app form, enter information about your app, then agree to Yelp API Terms of Use and Display Requirements. Then click the Submit button.
+- You will now have an API Key."
+
+
+## Usage
+
+To use the package, it is recquired to have an API key as clarified in the previous section. In the following examples, we will read the key once from a saved file. You could create your own file or assign the key directly in the code.
+
+```{r load package}
+library(yelpr)
+```
+
+```{r read App key}
+key <- readLines("yelp_app_key.txt")
+```
+
+### Business Endpoint 
+
+The available functions are:
+
+- `business_search()`
+- `business_lookup_id()`
+- `business_search_phone()`
+- `business_search_review()`
+- `business_search_autocomplete()`
+- `business_search_transaction()`
+- `business_match_name()`
+
+
+For example `business_search()` returns up to 1000 businesses based on the provided search criteria. The location OR (longitude+latitude) are required, plus Additional [optional parameters](https://www.yelp.com/developers/documentation/v3/business_search).
+
+Here we will retrieve the first 5 results in new york with the term 'chinese'
+
+```{r example business_search}
+# search businesses with keyword 'chinese' in 'New York'
+business_ny <- business_search(api_key = key,
+                location = 'New York',
+                term = "chinese",
+                limit = 5)
+```
+
+The function returns a list, so we could see the details of the businesses as follows:
+
+```{r print businesses details}
+business_ny$businesses
+```
+
+
+### Events Endpoint
+
+The available functions are:
+
+- event_lookup_id()
+- event_search()
+- event_search_featured()
+
+For example, `event_search_featured` returns the featured event, chosen by Yelp's community managers, for a given location. The location OR (longitude+latitude) are required.
+
+Here we'll get the featured event in the given location using the longitude and latitude parameters.
+
+```{r example event_search_featured}
+# search featured event in New York
+event_search_featured(api_key = key,
+                      longitude = "-74.01385", latitude = "40.70387")
+```
+
+
