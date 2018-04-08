@@ -11,6 +11,28 @@ business_lookup_id(api_key, business_id)
 
 \item{business_id}{business id}
 }
+\value{
+\itemize{
+\item categories: A list of category title and alias pairs associated with this business.
+\item coordinates: The coordinates of this business
+\item display_phone: Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country.
+\item hours: Opening hours of the business
+\item id: Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
+\item alias: Unique Yelp alias of this business. Can contain unicode characters. Example: 'yelp-san-francisco'. Also see: \href{https://www.yelp.com/developers/faq#difference-between-id-and-alias}{What's the difference between the Yelp business ID and business alias?}
+\item image_url: URL of photo for this business
+\item is_claimed: Whether business has been claimed by a business owner
+\item is_closed: Whether business has been (permanently) closed
+\item location: 	The location of this business, including address, city, state, zip code and country
+\item name: Name of this business
+\item phone: Phone number of the business
+\item photos: URLs of up to three photos of the business
+\item price: Price level of the business. Value is one of $, $$, $$$ and $$$$
+\item rating: Rating for this business (value ranges from 1, 1.5, ... 4.5, 5)
+\item review_count: Number of reviews for this business
+\item url: URL for business page on Yelp
+\item transactions: 	A list of Yelp transactions that the business is registered for. Current supported values are "pickup", "delivery", and "restaurant_reservation"
+}
+}
 \description{
 Search businesses on yelp by id
 }

@@ -44,6 +44,27 @@ business_search <- function(api_key, parameters){
 #' key <- "######"
 #' business_lookup_id(key, 'gary-danko-san-francisco')
 #'
+#' @return
+#' * categories: A list of category title and alias pairs associated with this business.
+#' * coordinates: The coordinates of this business
+#' * display_phone: Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country.
+#' * hours: Opening hours of the business
+#' * id: Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
+#' * alias: Unique Yelp alias of this business. Can contain unicode characters. Example: 'yelp-san-francisco'. Also see: [What's the difference between the Yelp business ID and business alias?](https://www.yelp.com/developers/faq#difference-between-id-and-alias)
+#' * image_url: URL of photo for this business
+#' * is_claimed: Whether business has been claimed by a business owner
+#' * is_closed: Whether business has been (permanently) closed
+#' * location: 	The location of this business, including address, city, state, zip code and country
+#' * name: Name of this business
+#' * phone: Phone number of the business
+#' * photos: URLs of up to three photos of the business
+#' * price: Price level of the business. Value is one of $, $$, $$$ and $$$$
+#' * rating: Rating for this business (value ranges from 1, 1.5, ... 4.5, 5)
+#' * review_count: Number of reviews for this business
+#' * url: URL for business page on Yelp
+#' * transactions: 	A list of Yelp transactions that the business is registered for. Current supported values are "pickup", "delivery", and "restaurant_reservation"
+#' @md
+
 #' @export
 business_lookup_id <- function(api_key, business_id){
 
