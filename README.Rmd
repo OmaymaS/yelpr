@@ -74,7 +74,7 @@ business_ny <- business_search(api_key = key,
 The function returns a list, so we could see the details of the businesses as follows:
 
 ```{r print businesses details}
-DT::datatable(business_ny$businesses, fillContainer = TRUE)
+business_ny$businesses
 ```
 
 
