@@ -11,6 +11,14 @@ business_search_review(api_key, business_id)
 
 \item{business_id}{business id}
 }
+\value{
+List with the following elements:
+\itemize{
+\item total: The total number of reviews that the business has
+\item reviews: A list of up to three reviews of this business
+\item possible_languages: A list of languages for which the business has at least one review
+}
+}
 \description{
 return up to three review excerpts for a given business ordered by Yelp's default sort order
 }
