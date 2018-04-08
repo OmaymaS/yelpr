@@ -1,5 +1,5 @@
 ---
-title: "README"
+title: "yelpr"
 output: 
   html_document: 
     keep_md: yes
@@ -7,8 +7,13 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, comment = "")
 ```
+
+```{r load extra packages}
+library(DT)
+```
+
 
 # yelpr
 
@@ -29,13 +34,15 @@ From [yelp authentication guide](https://www.yelp.com/developers/documentation/v
 
 ## Usage
 
-To use the package, it is recquired to have an API key as clarified in the previous section. In the following examples, we will read the key once from a saved file. You could create your own file or assign the key directly in the code.
+To use the package, it is required to have an API key as clarified in the previous section. In the following examples, we will read the key once from a saved file. You could create your own file or assign the key directly in the code.
 
 ```{r load package}
+# load yelpr package
 library(yelpr)
 ```
 
 ```{r read App key}
+## assign app key
 key <- readLines("yelp_app_key.txt")
 ```
 
@@ -67,7 +74,7 @@ business_ny <- business_search(api_key = key,
 The function returns a list, so we could see the details of the businesses as follows:
 
 ```{r print businesses details}
-business_ny$businesses
+DT::datatable(business_ny$businesses, fillContainer = TRUE)
 ```
 
 
@@ -81,12 +88,16 @@ The available functions are:
 
 For example, `event_search_featured` returns the featured event, chosen by Yelp's community managers, for a given location. The location OR (longitude+latitude) are required.
 
-Here we'll get the featured event in the given location using the longitude and latitude parameters.
+Here we'll get the details of featured event in the given location using the longitude and latitude.
 
 ```{r example event_search_featured}
-# search featured event in New York
-event_search_featured(api_key = key,
+# search featured event in the given location coordinates
+event <- event_search_featured(api_key = key,
                       longitude = "-74.01385", latitude = "40.70387")
 ```
 
+And the event name would be:
+```{r prnt event name}
+event$name
+```
 

@@ -1,5 +1,11 @@
-# README
+# yelpr
 
+
+
+
+```r
+library(DT)
+```
 
 
 # yelpr
@@ -21,15 +27,17 @@ From [yelp authentication guide](https://www.yelp.com/developers/documentation/v
 
 ## Usage
 
-To use the package, it is recquired to have an API key as clarified in the previous section. In the following examples, we will read the key once from a saved file. You could create your own file or assign the key directly in the code.
+To use the package, it is required to have an API key as clarified in the previous section. In the following examples, we will read the key once from a saved file. You could create your own file or assign the key directly in the code.
 
 
 ```r
+# load yelpr package
 library(yelpr)
 ```
 
 
 ```r
+## assign app key
 key <- readLines("yelp_app_key.txt")
 ```
 
@@ -63,83 +71,11 @@ The function returns a list, so we could see the details of the businesses as fo
 
 
 ```r
-business_ny$businesses
+DT::datatable(business_ny$businesses, class = "compact")
 ```
 
-```
-##                       id                                        alias
-## 1 k8GFfCXO2FIIJIo0ICYSRA                      bao-bao-cafe-new-york-3
-## 2 X8ZS-dgiMIJvhwf9SaDnjw                       wah-fung-no-1-new-york
-## 3 croh2zWlbPyCQTNS11klcg                     sichuan-manor-new-york-3
-## 4 0CjK3esfpFcxIopebzjFxA                     joes-shanghai-new-york-2
-## 5 lynQoI3w_pzYfHGeuUU-Qg shu-jiao-fu-zhou-cuisine-restaurant-new-york
-##                                  name
-## 1                        Bao Bao Cafe
-## 2                       Wah Fung No 1
-## 3                       Sichuan Manor
-## 4                      Joe's Shanghai
-## 5 Shu Jiao Fu Zhou Cuisine Restaurant
-##                                                              image_url
-## 1 https://s3-media2.fl.yelpcdn.com/bphoto/pjJHmOiblI-oVf6NBjgL9g/o.jpg
-## 2 https://s3-media2.fl.yelpcdn.com/bphoto/QrbtEYSiE_AQkqu59Qmp4Q/o.jpg
-## 3 https://s3-media2.fl.yelpcdn.com/bphoto/QcWywXc47siclZkYCsxJnQ/o.jpg
-## 4 https://s3-media3.fl.yelpcdn.com/bphoto/ekUo5egd4dlE7zJyb4-Leg/o.jpg
-## 5 https://s3-media2.fl.yelpcdn.com/bphoto/TALCyEl-e45rDrKk3vCWaQ/o.jpg
-##   is_closed
-## 1     FALSE
-## 2     FALSE
-## 3     FALSE
-## 4     FALSE
-## 5     FALSE
-##                                                                                                                                                                                                         url
-## 1                      https://www.yelp.com/biz/bao-bao-cafe-new-york-3?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ms3wnheA1zMACsW_cG2W_Q
-## 2                       https://www.yelp.com/biz/wah-fung-no-1-new-york?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ms3wnheA1zMACsW_cG2W_Q
-## 3                     https://www.yelp.com/biz/sichuan-manor-new-york-3?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ms3wnheA1zMACsW_cG2W_Q
-## 4                     https://www.yelp.com/biz/joes-shanghai-new-york-2?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ms3wnheA1zMACsW_cG2W_Q
-## 5 https://www.yelp.com/biz/shu-jiao-fu-zhou-cuisine-restaurant-new-york?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ms3wnheA1zMACsW_cG2W_Q
-##   review_count
-## 1           26
-## 2          930
-## 3           35
-## 4         4990
-## 5          472
-##                                                                    categories
-## 1                                          noodles, chinese, Noodles, Chinese
-## 2                                                            chinese, Chinese
-## 3                                         szechuan, dimsum, Szechuan, Dim Sum
-## 4 shanghainese, seafood, venues, Shanghainese, Seafood, Venues & Event Spaces
-## 5                                                            chinese, Chinese
-##   rating coordinates.latitude coordinates.longitude
-## 1    4.5             40.70854             -74.01367
-## 2    4.5             40.71735             -73.99457
-## 3    4.5             40.75817             -73.98831
-## 4    4.0             40.71467             -73.99776
-## 5    4.5             40.71843             -73.99169
-##                               transactions price location.address1
-## 1                         delivery, pickup     $  106 Greenwich St
-## 2                   restaurant_reservation     $    79 Chrystie St
-## 3 restaurant_reservation, delivery, pickup   $$$     258 W 44th St
-## 4                                             $$         9 Pell St
-## 5           pickup, restaurant_reservation     $   118 Eldridge St
-##   location.address2 location.address3 location.city location.zip_code
-## 1              <NA>                        New York             10006
-## 2                                          New York             10002
-## 3              <NA>                        New York             10036
-## 4                                          New York             10013
-## 5              <NA>              <NA>      New York             10002
-##   location.country location.state             location.display_address
-## 1               US             NY 106 Greenwich St, New York, NY 10006
-## 2               US             NY   79 Chrystie St, New York, NY 10002
-## 3               US             NY    258 W 44th St, New York, NY 10036
-## 4               US             NY        9 Pell St, New York, NY 10013
-## 5               US             NY  118 Eldridge St, New York, NY 10002
-##          phone  display_phone distance
-## 1 +19172617122 (917) 261-7122 1663.255
-## 2 +12129255175 (212) 925-5175 1323.285
-## 3 +16467670854 (646) 767-0854 5884.486
-## 4 +12122338888 (212) 233-8888 1066.509
-## 5 +12126252532 (212) 625-2532 1460.313
-```
+<!--html_preserve--><div id="htmlwidget-843ffc97adcad4c23169" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-843ffc97adcad4c23169">{"x":{"filter":"none","data":[["1","2","3","4","5"],["k8GFfCXO2FIIJIo0ICYSRA","X8ZS-dgiMIJvhwf9SaDnjw","croh2zWlbPyCQTNS11klcg","0CjK3esfpFcxIopebzjFxA","lynQoI3w_pzYfHGeuUU-Qg"],["bao-bao-cafe-new-york-3","wah-fung-no-1-new-york","sichuan-manor-new-york-3","joes-shanghai-new-york-2","shu-jiao-fu-zhou-cuisine-restaurant-new-york"],["Bao Bao Cafe","Wah Fung No 1","Sichuan Manor","Joe's Shanghai","Shu Jiao Fu Zhou Cuisine Restaurant"],["https://s3-media2.fl.yelpcdn.com/bphoto/pjJHmOiblI-oVf6NBjgL9g/o.jpg","https://s3-media2.fl.yelpcdn.com/bphoto/QrbtEYSiE_AQkqu59Qmp4Q/o.jpg","https://s3-media2.fl.yelpcdn.com/bphoto/QcWywXc47siclZkYCsxJnQ/o.jpg","https://s3-media3.fl.yelpcdn.com/bphoto/ekUo5egd4dlE7zJyb4-Leg/o.jpg","https://s3-media2.fl.yelpcdn.com/bphoto/TALCyEl-e45rDrKk3vCWaQ/o.jpg"],[false,false,false,false,false],["https://www.yelp.com/biz/bao-bao-cafe-new-york-3?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&amp;utm_campaign=yelp_api_v3&amp;utm_medium=api_v3_business_search&amp;utm_source=ms3wnheA1zMACsW_cG2W_Q","https://www.yelp.com/biz/wah-fung-no-1-new-york?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&amp;utm_campaign=yelp_api_v3&amp;utm_medium=api_v3_business_search&amp;utm_source=ms3wnheA1zMACsW_cG2W_Q","https://www.yelp.com/biz/sichuan-manor-new-york-3?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&amp;utm_campaign=yelp_api_v3&amp;utm_medium=api_v3_business_search&amp;utm_source=ms3wnheA1zMACsW_cG2W_Q","https://www.yelp.com/biz/joes-shanghai-new-york-2?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&amp;utm_campaign=yelp_api_v3&amp;utm_medium=api_v3_business_search&amp;utm_source=ms3wnheA1zMACsW_cG2W_Q","https://www.yelp.com/biz/shu-jiao-fu-zhou-cuisine-restaurant-new-york?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&amp;utm_campaign=yelp_api_v3&amp;utm_medium=api_v3_business_search&amp;utm_source=ms3wnheA1zMACsW_cG2W_Q"],[26,930,35,4991,472],[{"alias":["noodles","chinese"],"title":["Noodles","Chinese"]},{"alias":["chinese"],"title":["Chinese"]},{"alias":["szechuan","dimsum"],"title":["Szechuan","Dim Sum"]},{"alias":["shanghainese","seafood","venues"],"title":["Shanghainese","Seafood","Venues & Event Spaces"]},{"alias":["chinese"],"title":["Chinese"]}],[4.5,4.5,4.5,4,4.5],{"latitude":[40.70854,40.71735,40.7581711239604,40.7146691442891,40.7184290357839],"longitude":[-74.01367,-73.99457,-73.9883149042726,-73.9977602206654,-73.9916928979573]},[["delivery","pickup"],"restaurant_reservation",["restaurant_reservation","delivery","pickup"],[],["pickup","restaurant_reservation"]],["$","$","$$$","$$","$"],{"address1":["106 Greenwich St","79 Chrystie St","258 W 44th St","9 Pell St","118 Eldridge St"],"address2":[null,"",null,"",null],"address3":["","","","",null],"city":["New York","New York","New York","New York","New York"],"zip_code":["10006","10002","10036","10013","10002"],"country":["US","US","US","US","US"],"state":["NY","NY","NY","NY","NY"],"display_address":[["106 Greenwich St","New York, NY 10006"],["79 Chrystie St","New York, NY 10002"],["258 W 44th St","New York, NY 10036"],["9 Pell St","New York, NY 10013"],["118 Eldridge St","New York, NY 10002"]]},["+19172617122","+12129255175","+16467670854","+12122338888","+12126252532"],["(917) 261-7122","(212) 925-5175","(646) 767-0854","(212) 233-8888","(212) 625-2532"],[1663.25541418963,1323.28518070673,5884.48647388588,1066.50854983491,1460.31286033864]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>alias<\/th>\n      <th>name<\/th>\n      <th>image_url<\/th>\n      <th>is_closed<\/th>\n      <th>url<\/th>\n      <th>review_count<\/th>\n      <th>categories<\/th>\n      <th>rating<\/th>\n      <th>coordinates<\/th>\n      <th>transactions<\/th>\n      <th>price<\/th>\n      <th>location<\/th>\n      <th>phone<\/th>\n      <th>display_phone<\/th>\n      <th>distance<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[7,9,16]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 ### Events Endpoint
@@ -152,101 +88,22 @@ The available functions are:
 
 For example, `event_search_featured` returns the featured event, chosen by Yelp's community managers, for a given location. The location OR (longitude+latitude) are required.
 
-Here we'll get the featured event in the given location using the longitude and latitude parameters.
+Here we'll get the details of featured event in the given location using the longitude and latitude.
 
 
 ```r
-# search featured event in New York
-event_search_featured(api_key = key,
+# search featured event in the given location coordinates
+event <- event_search_featured(api_key = key,
                       longitude = "-74.01385", latitude = "40.70387")
 ```
 
-```
-## $attending_count
-## [1] 1477
-## 
-## $category
-## [1] "other"
-## 
-## $cost
-## [1] 500
-## 
-## $cost_max
-## [1] 0
-## 
-## $description
-## [1] "What the heck is this? Back by popular demand, this is an essential list of at least one Yelp-approved activity to accomplish every week throughout 2018...."
-## 
-## $event_site_url
-## [1] "https://www.yelp.com/events/new-york-52-things-to-do-in-2018?adjust_creative=ms3wnheA1zMACsW_cG2W_Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_event_featured&utm_source=ms3wnheA1zMACsW_cG2W_Q"
-## 
-## $id
-## [1] "new-york-52-things-to-do-in-2018"
-## 
-## $image_url
-## [1] "https://s3-media2.fl.yelpcdn.com/ephoto/aVqlc21JYisuWUgdltzYoA/o.jpg"
-## 
-## $interested_count
-## [1] 976
-## 
-## $is_canceled
-## [1] FALSE
-## 
-## $is_free
-## [1] FALSE
-## 
-## $is_official
-## [1] FALSE
-## 
-## $latitude
-## [1] 40.70387
-## 
-## $longitude
-## [1] -74.01385
-## 
-## $name
-## [1] "52 Things To Do in 2018"
-## 
-## $tickets_url
-## [1] ""
-## 
-## $time_end
-## [1] "2018-04-28 06:30"
-## 
-## $time_start
-## [1] "2018-03-28 07:00"
-## 
-## $location
-## $location$address1
-## [1] ""
-## 
-## $location$address2
-## [1] ""
-## 
-## $location$address3
-## [1] ""
-## 
-## $location$city
-## [1] "New York"
-## 
-## $location$zip_code
-## [1] "10004"
-## 
-## $location$country
-## [1] "US"
-## 
-## $location$state
-## [1] "NY"
-## 
-## $location$display_address
-## [1] "New York, NY 10004"
-## 
-## $location$cross_streets
-## [1] ""
-## 
-## 
-## $business_id
-## [1] "new-york-city-new-york-14"
+And the event name would be:
+
+```r
+event$name
 ```
 
+```
+[1] "52 Things To Do in 2018"
+```
 
