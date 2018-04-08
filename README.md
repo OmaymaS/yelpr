@@ -3,16 +3,11 @@
 
 
 
-```r
-library(DT)
-```
-
-
-# yelpr
-
 An R library for the [Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started)
 
 ## Installation
+
+`devtools::install_github("OmaymaS/yelpr")`
 
 ## API Authentication
 
@@ -67,12 +62,8 @@ business_ny <- business_search(api_key = key,
                 limit = 5)
 ```
 
-The function returns a list, so we could see the details of the businesses as follows:
+The function returns a list, so we can extract the details of the businesses `business_ny$businesses`:
 
-
-```r
-business_ny$businesses
-```
 
 ```
                       id                                        alias
@@ -150,6 +141,7 @@ business_ny$businesses
 ```
 
 
+
 ### Events Endpoint
 
 The available functions are:
@@ -169,13 +161,6 @@ event <- event_search_featured(api_key = key,
                       longitude = "-74.01385", latitude = "40.70387")
 ```
 
-And the event name would be:
-
-```r
-event$name
-```
-
-```
-[1] "52 Things To Do in 2018"
-```
+And the event name `event$name` would be:
+**52 Things To Do in 2018**
 
