@@ -3,7 +3,7 @@ Type: Package
 Title: yelpr
 Version: 0.1.0
 Author: OmaymaS
-Maintainer: OmaymaS
+Maintainer: OmaymaS <omayma@onceupondata.com>
 Description: yelpr
 License: NA
 Encoding: UTF-8
